@@ -5,17 +5,27 @@ class MessageList extends Component {
 
 
   render() {
-    const AllMessages = this.props.messages.map((message, index) => <Message key={index} message={message} />);
+    const AllMessages = this.props.messages.map((message, index) => {
+      switch(message.type) {
+        case 'incomingMessage':
+          return (<Message key={index} message={message} />);
+          break;
+        case 'incomingNotification':
+          return (
+            <div className='message system' key={index}>
+              {message.content}
+            </div>
+          );
+          break;
+        default:
+          throw new Error(`Unknown event type in MessageList: ${message.type}`);
+      }
+    });
     console.log("Rendering <MessageList/>");
 
     return (
-      // <Message />
       <main className="messages">
         {AllMessages}
-
-        <div className="message system">
-          Anonymous1 changed their name to nomnom.
-        </div>
       </main>
     )
   }

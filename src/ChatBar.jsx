@@ -3,8 +3,14 @@ import React, {Component} from 'react';
 class ChatBar extends Component {
   handleKeyPress = (event) => {
     if (event.key == 'Enter') {
+      const name = document.getElementsByClassName('chatbar-username')[0].value;
+
+      if (name !== this.props.currentUser.name) {
+        this.props.newNotificationSent(name);
+      };
+
       this.props.newMessageSent(
-        document.getElementsByClassName('chatbar-username')[0].value,
+        name,
         event.target.value
       );
       event.target.value = '';

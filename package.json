@@ -45,6 +45,7 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
+    "babel-preset-react": "^6.11.1",
     "express": "4.15.2",
     "react": "15.2.1",
     "react-dom": "15.2.1"
