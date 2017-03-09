@@ -12,21 +12,11 @@ class App extends Component {
       messages: [],
       numOfClients: 1,
     };
-  }
-
-  scrollToBottom = () => {
-    console.log('did it work?', document.getElementsByClassName('message'));
-    const messages = document.getElementsByClassName('message');
-    const node = messages[messages.length-1];
-    if (node) {
-      console.log(node);
-      node.scrollIntoView({behavior: "smooth"});
-    }
-  }
+  };
 
   componentDidUpdate() {
     this.scrollToBottom();
-  }
+  };
 
   componentDidMount() {
     this.socket = new WebSocket('ws://localhost:3001/');
@@ -53,6 +43,16 @@ class App extends Component {
       };
 
     };
+  };
+
+  scrollToBottom = () => {
+    console.log('did it work?', document.getElementsByClassName('message'));
+    const messages = document.getElementsByClassName('message');
+    const node = messages[messages.length-1];
+    if (node) {
+      console.log(node);
+      node.scrollIntoView({behavior: "smooth"});
+    }
   };
 
   newMessageSent = (username, messageText) => {
